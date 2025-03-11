@@ -1,0 +1,18 @@
+name: 🔄 Notificación - Actualización de Cliente
+
+on:
+  push:
+    paths:
+      - 'clientes/**'
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📢 Notificar al equipo sobre la actualización de un cliente
+        run: echo "🔔 Se ha actualizado la información de un cliente."
+
+      - name: ✅ Registrar evento en los logs
+        run: echo "$(date) - Cliente actualizado" >> logs.txt
