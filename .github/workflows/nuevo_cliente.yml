@@ -1,0 +1,18 @@
+name: 🆕 Notificación - Nuevo Cliente
+
+on:
+  push:
+    paths:
+      - 'clientes/**'  # Detecta cambios en la carpeta donde se guardan los clientes
+  workflow_dispatch:  # Permite ejecución manual
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📢 Notificar al equipo sobre la creación de un nuevo cliente
+        run: echo "🔔 Se ha creado un nuevo cliente en el sistema."
+      
+      - name: ✅ Registrar evento en los logs
+        run: echo "$(date) - Nuevo cliente registrado" >> logs.txt
