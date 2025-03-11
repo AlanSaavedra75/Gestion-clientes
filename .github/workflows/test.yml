@@ -1,0 +1,22 @@
+name: Verificación de Código
+
+on: [push, pull_request]  # Se ejecuta en cada push o pull request
+
+jobs:
+  test:
+    runs-on: ubuntu-latest  # Corre en un sistema Linux
+
+    steps:
+      - name: 🛠️ Clonar el repositorio
+        uses: actions/checkout@v3
+
+      - name: 🐍 Instalar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: 📦 Instalar dependencias
+        run: pip install -r requirements.txt || echo "No hay dependencias"
+
+      - name: ✅ Ejecutar pruebas
+        run: python -m unittest discover tests/
